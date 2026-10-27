@@ -1,0 +1,719 @@
+/* ===== Student Attendance Management System — style.css ===== */
+
+:root {
+    --bg: #f4f6fb;
+    --surface: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+
+    --blue: #2563eb;
+    --blue-soft: #dbeafe;
+    --green: #16a34a;
+    --green-soft: #dcfce7;
+    --purple: #7c3aed;
+    --purple-soft: #ede9fe;
+    --orange: #ea580c;
+    --orange-soft: #ffedd5;
+
+    --radius: 16px;
+    --shadow: 0 4px 14px rgba(31, 41, 55, 0.06);
+    --shadow-hover: 0 14px 30px rgba(31, 41, 55, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 40px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+    background: var(--purple-soft);
+    border-radius: 10px;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.navbar nav a {
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--muted);
+    border-radius: 999px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar nav a:hover {
+    background: var(--bg);
+    color: var(--primary);
+}
+
+.navbar nav a.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* ===== Main layout ===== */
+.dashboard {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 20px;
+}
+
+/* ===== Welcome banner ===== */
+.welcome {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 40px 44px;
+    margin-bottom: 36px;
+    color: #fff;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #a855f7 100%);
+    border-radius: 22px;
+    box-shadow: 0 16px 36px rgba(79, 70, 229, 0.28);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome::after {
+    content: "";
+    position: absolute;
+    right: -60px;
+    top: -60px;
+    width: 220px;
+    height: 220px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.welcome-icon {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    font-size: 2.6rem;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 22px;
+    backdrop-filter: blur(4px);
+}
+
+.welcome-text h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.85;
+}
+
+.welcome-text h1 {
+    margin: 4px 0 10px;
+    font-size: 2.1rem;
+    line-height: 1.2;
+}
+
+.welcome-text p {
+    max-width: 560px;
+    font-size: 1.02rem;
+    opacity: 0.92;
+}
+
+/* ===== Cards ===== */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.dashboard-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px 26px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    border-radius: 14px;
+}
+
+.card-icon.blue   { background: var(--blue-soft);   color: var(--blue); }
+.card-icon.green  { background: var(--green-soft);  color: var(--green); }
+.card-icon.purple { background: var(--purple-soft); color: var(--purple); }
+.card-icon.orange { background: var(--orange-soft); color: var(--orange); }
+
+.dashboard-card h2 {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+.dashboard-card p {
+    flex: 1;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+/* ===== Card buttons ===== */
+.card-button {
+    display: inline-block;
+    padding: 11px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 10px;
+    transition: filter 0.2s, transform 0.2s;
+}
+
+.card-button:hover {
+    filter: brightness(0.92);
+    transform: translateX(3px);
+}
+
+.blue-button   { background: var(--blue); }
+.green-button  { background: var(--green); }
+.purple-button { background: var(--purple); }
+.orange-button { background: var(--orange); }
+
+/* ===== Register link ===== */
+.register-link {
+    margin-top: 32px;
+    text-align: center;
+    font-size: 0.97rem;
+    color: var(--muted);
+}
+
+.register-link a {
+    font-weight: 600;
+    color: var(--primary);
+    border-bottom: 1px dashed var(--primary);
+}
+
+.register-link a:hover {
+    color: var(--primary-dark);
+}
+
+/* ===== Footer ===== */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 18px 40px;
+    margin-top: 30px;
+    font-size: 0.88rem;
+    color: var(--muted);
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+}
+
+/* ===== Page header (inner pages) ===== */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.page-header h1 {
+    font-size: 1.9rem;
+    color: var(--primary-dark);
+}
+
+.page-header p {
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+.back-button {
+    padding: 10px 18px;
+    font-size: 0.93rem;
+    font-weight: 600;
+    color: var(--primary);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.back-button:hover {
+    background: var(--purple-soft);
+    border-color: var(--purple);
+}
+
+/* ===== Records table ===== */
+.table-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.97rem;
+}
+
+.records-table thead th {
+    padding: 16px 22px;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+.records-table tbody td {
+    padding: 15px 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+.records-table tbody tr:nth-child(even) {
+    background: #f9fafc;
+}
+
+.records-table tbody tr:hover {
+    background: var(--purple-soft);
+}
+
+.records-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.student-name {
+    font-weight: 600;
+}
+
+/* Status badges */
+.badge {
+    display: inline-block;
+    padding: 5px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--bg);
+    border-radius: 999px;
+}
+
+.badge-present {
+    color: #15803d;
+    background: var(--green-soft);
+}
+
+.badge-absent {
+    color: #b91c1c;
+    background: #fee2e2;
+}
+
+/* Empty state */
+.empty-state {
+    padding: 56px 20px !important;
+    text-align: center;
+}
+
+.empty-state:hover {
+    background: none;
+}
+
+.empty-icon {
+    font-size: 2.6rem;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    margin-bottom: 18px;
+    color: var(--muted);
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ===== Form card (Mark Attendance) ===== */
+.form-card {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 34px 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label,
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.form-group select,
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group select:focus,
+.form-group input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
+}
+
+/* Present / Absent selector */
+.status-options {
+    display: flex;
+    gap: 12px;
+}
+
+.form-group .status-option {
+    flex: 1;
+    margin: 0;
+    cursor: pointer;
+}
+
+.status-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.status-pill {
+    display: block;
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--bg);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.status-option input:focus-visible + .status-pill {
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
+}
+
+.status-option input:checked + .status-pill.present {
+    color: #15803d;
+    background: var(--green-soft);
+    border-color: var(--green);
+}
+
+.status-option input:checked + .status-pill.absent {
+    color: #b91c1c;
+    background: #fee2e2;
+    border-color: #dc2626;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 13px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: #fff;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.2s;
+}
+
+.submit-button:hover {
+    filter: brightness(0.92);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+    .form-card {
+        padding: 26px 20px;
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+    .records-table thead {
+        display: none;
+    }
+
+    .records-table,
+    .records-table tbody,
+    .records-table tr,
+    .records-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .records-table tbody tr {
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .records-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 8px 18px;
+        border: none;
+    }
+
+    .records-table tbody td::before {
+        content: attr(data-label);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    .empty-state::before {
+        content: none !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        padding: 12px 18px;
+        justify-content: center;
+    }
+
+    .welcome {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 22px;
+    }
+
+    .welcome-text h1 {
+        font-size: 1.6rem;
+    }
+
+    .footer {
+        padding: 16px 18px;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+
+/* ===== Toast notification ===== */
+.toast {
+    position: fixed;
+    top: 90px;
+    right: 24px;
+    width: 360px;
+    max-width: calc(100vw - 32px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 14px 16px 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.4;
+    border: 1px solid;
+    border-left-width: 5px;
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+    overflow: hidden;
+    z-index: 9999;
+    animation: toastSlideIn 0.35s ease;
+}
+
+/* Round icon on the left */
+.toast::before {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.toast span {
+    flex: 1;
+}
+
+/* Success (green) */
+.toast.success {
+    background: #f0fdf4;
+    border-color: #22c55e;
+    color: #166534;
+}
+
+.toast.success::before {
+    content: "✓";
+    background: #22c55e;
+}
+
+/* Error (red) */
+.toast.error {
+    background: #fef2f2;
+    border-color: #ef4444;
+    color: #991b1b;
+}
+
+.toast.error::before {
+    content: "!";
+    background: #ef4444;
+}
+
+/* Close button */
+.toast-close {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.55;
+    transition: opacity 0.2s;
+}
+
+.toast-close:hover {
+    opacity: 1;
+}
+
+/* Countdown bar at the bottom (matches the 4 second auto-hide) */
+.toast::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: currentColor;
+    opacity: 0.3;
+    transform-origin: left;
+    animation: toastTimer 4s linear forwards;
+}
+
+@keyframes toastSlideIn {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes toastTimer {
+    from { transform: scaleX(1); }
+    to   { transform: scaleX(0); }
+}
+
+@media (max-width: 640px) {
+    .toast {
+        top: 76px;
+        left: 16px;
+        right: 16px;
+        width: auto;
+    }
+}

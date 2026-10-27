@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Records</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="brand">
+            <span class="brand-icon">🎓</span>
+            <span>Student Attendance System</span>
+        </div>
+
+        <nav>
+            <a href="/">⌂ Home</a>
+            <a href="/students">♟ Students</a>
+            <a href="/attendance">▦ Attendance</a>
+            <a class="active" href="/attendance_records">▤ Records</a>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+
+        <section class="page-header">
+            <div>
+                <h1>Attendance Records</h1>
+                <p>Complete attendance history of all students.</p>
+            </div>
+            <a class="back-button" href="/">← Back to Home</a>
+        </section>
+
+        <section class="table-card">
+            <div class="table-wrapper">
+                <table class="records-table">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Roll Number</th>
+                            <th>Attendance Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in records %}
+                        <tr>
+                            <td data-label="Student Name">
+                                <span class="student-name">{{ record.name }}</span>
+                            </td>
+                            <td data-label="Roll Number">{{ record.roll_no }}</td>
+                            <td data-label="Attendance Date">{{ record.attendance_date }}</td>
+                            <td data-label="Status">
+                                {% if record.status|lower == 'present' %}
+                                    <span class="badge badge-present">● Present</span>
+                                {% elif record.status|lower == 'absent' %}
+                                    <span class="badge badge-absent">● Absent</span>
+                                {% else %}
+                                    <span class="badge">{{ record.status }}</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="4" class="empty-state">
+                                <div class="empty-icon">📭</div>
+                                <p>No attendance records found yet.</p>
+                                <a class="card-button purple-button" href="/attendance">Mark Attendance →</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <span>© 2026 Student Attendance Management System</span>
+        <span>Simple&nbsp; • &nbsp;Reliable&nbsp; • &nbsp;Efficient</span>
+    </footer>
+
+</body>
+</html>

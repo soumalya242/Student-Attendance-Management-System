@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="brand">
+            <span class="brand-icon">🎓</span>
+            <span>Student Attendance System</span>
+        </div>
+
+        <nav>
+            <a href="/">⌂ Home</a>
+            <a class="active" href="/students">♟ Students</a>
+            <a href="/attendance">▦ Attendance</a>
+            <a href="/attendance_records">▤ Records</a>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+
+        <section class="page-header">
+            <div>
+                <h1>Registered Students</h1>
+                <p>All students currently registered in the system.</p>
+            </div>
+            <a class="back-button" href="/">← Back to Home</a>
+        </section>
+
+        <section class="table-card">
+            <div class="table-wrapper">
+                <table class="records-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Roll Number</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                        <tr>
+                            <td data-label="ID">{{ student.id }}</td>
+                            <td data-label="Name">
+                                <span class="student-name">{{ student.name }}</span>
+                            </td>
+                            <td data-label="Roll Number">{{ student.roll_no }}</td>
+                            <td data-label="Department">
+                                <span class="badge">{{ student.department }}</span>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="4" class="empty-state">
+                                <div class="empty-icon">🎓</div>
+                                <p>No students registered yet.</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <span>© 2026 Student Attendance Management System</span>
+        <span>Simple&nbsp; • &nbsp;Reliable&nbsp; • &nbsp;Efficient</span>
+    </footer>
+
+</body>
+</html>

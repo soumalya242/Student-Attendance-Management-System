@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Attendance Management System</title>
+     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet"href="{{ url_for('static', filename='style.css') }}"/>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="brand">
+        <span class="brand-icon">🎓</span>
+        <span>Student Attendance System</span>
+      </div>
+
+      <nav>
+        <a class="active" href="/">⌂ Home</a>
+        <a href="/students">♟ Students</a>
+        <a href="/attendance">▦ Attendance</a>
+        <a href="/attendance_records">▤ Records</a>
+      </nav>
+    </header>
+
+    <main class="dashboard">
+      <section class="welcome">
+        <div class="welcome-icon">📋</div>
+        <div class="welcome-text">
+          <h2>Welcome to</h2>
+          <h1>Student Attendance Management System</h1>
+          <p>
+            Easily manage student information, mark attendance, and view records
+            all in one place.
+          </p>
+        </div>
+      </section>
+
+      <section class="dashboard-cards">
+        <article class="dashboard-card">
+          <div class="card-icon blue">♟</div>
+          <h2>View All Students</h2>
+          <p>See the list of all registered students in the system.</p>
+          <a class="card-button blue-button" href="/students">
+            View Students →
+          </a>
+        </article>
+
+        <article class="dashboard-card">
+          <div class="card-icon green">▦</div>
+          <h2>Mark Attendance</h2>
+          <p>Record whether students are present or absent for today.</p>
+          <a class="card-button green-button" href="/attendance">
+            Mark Attendance →
+          </a>
+        </article>
+
+        <article class="dashboard-card">
+          <div class="card-icon purple">▤</div>
+          <h2>View Attendance Records</h2>
+          <p>Check the complete attendance history of all students.</p>
+          <a class="card-button purple-button" href="/attendance_records">
+            View Records →
+          </a>
+        </article>
+
+        <article class="dashboard-card">
+          <div class="card-icon orange">＋</div>
+          <h2>Add New Student</h2>
+          <p>
+            Register a new student by entering their name, roll number and
+            department.
+          </p>
+          <a class="card-button orange-button" href="/add">
+            Add Student →
+          </a>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© 2026 Student Attendance Management System</span>
+      <span>Simple&nbsp; • &nbsp;Reliable&nbsp; • &nbsp;Efficient</span>
+    </footer>
+  </body>
+</html>
