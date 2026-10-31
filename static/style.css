@@ -727,3 +727,9 @@ html {
 html::-webkit-scrollbar {
     display: none; /* Chrome, Edge, Safari */
 }
+
+.page-header.centered {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
