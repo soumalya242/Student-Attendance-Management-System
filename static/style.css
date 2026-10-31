@@ -717,3 +717,13 @@ a {
         width: auto;
     }
 }
+
+/* Hide scrollbar but allow scrolling */
+html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Older Internet Explorer */
+}
+
+html::-webkit-scrollbar {
+    display: none; /* Chrome, Edge, Safari */
+}
